@@ -1,0 +1,134 @@
+<header>
+    <h2>Template</h2>
+</header>
+
+<section>
+    <p class="text-primary lead mt-3">Opérateur Pipe (|)</p>
+
+    <p>Majuscule: {{ min | uppercase }}</p>
+    <p>Minuscule: {{ maj | lowercase }}</p>
+
+    <p>Title: {{ title | titlecase }}</p>
+
+    <p>Date: {{ date | date:'dd/MM/yyyy' }}</p>
+
+    <p>PI: {{ pi | number:'1.1-5'}}</p>
+    <p>1/3: {{ tier | number:'2.3-5'}}</p>
+    <p>1/16: {{ seize | number:'2.3-5'}}</p>
+
+    <p>Currency (code): {{ price | currency:'CAD':'code':'1.2-2' }}</p>
+    <p>Currency (symbol): {{ price | currency:'CAD':'symbol':'1.2-2' }}</p>
+    <p>Currency (narrow): {{ price | currency:'CAD':'symbol-narrow':'1.2-2' }}</p>
+
+    <p>Pourcent: {{ seize | percent:'1.2-5' }} </p>
+
+    <p> Objet: {{ obj }}</p>
+    <p> Objet: {{ obj | json }}</p>
+
+    <p>Slice:</p>
+    <p>Page: {{index}}/{{total}}</p>
+
+    <ul>
+        <li *ngFor="let person of liste | slice:start:end"> {{ person }}</li>
+    </ul>
+    <div>
+        <button class="btn btn-outline-primary" (click)="prev()"> &lt; &lt; Prev </button>
+        <button class="btn btn-outline-primary" (click)="next()"> Next &gt; &gt; </button>
+    </div>
+
+    <p class="text-primary lead mt-3">Locales</p>
+
+    <p>
+        <a href="#" class="badge badge-dark" (click)="changeLocale('fr', $event)">Français</a>
+        <a href="#" class="badge badge-dark" (click)="changeLocale('en', $event)">Anglais</a>
+        <a href="#" class="badge badge-dark" (click)="changeLocale('de', $event)">Allemand</a>
+    </p>
+
+    <p>Date: {{ date | date:'full':'+0100':lang }}</p>
+
+    <p>Currency (code): {{ price | currency:'CAD':'code':'1.2-2':lang }}</p>
+    <p>Currency (symbol): {{ price | currency:'CAD':'symbol':'1.2-2':lang }}</p>
+    <p>Currency (narrow): {{ price | currency:'CAD':'symbol-narrow':'1.2-2':lang }}</p>
+
+    <p class="text-primary lead mt-3">Safe Operator</p>
+
+    <p>User = {{ user?.name }}</p>
+
+    <p class="text-primary lead mt-3">Les directives</p>
+
+    <h3>ngIf</h3>
+
+    <button class="btn btn-primary btn-sm" (click)="isVisible = !isVisible">
+        {{ isVisible? 'Hide': 'Show' }}
+    </button>
+
+    <div *ngIf="isVisible" class="text-justify mt-3 mb-3">
+        Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
+        A communi observantia non est recedendum. Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
+    </div>
+
+    <hr />
+
+    <div class="text-justify mt-3 mb-3" *ngIf="isVisible else elseBlock">
+        Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
+        A communi observantia non est recedendum. Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
+    </div>
+    <ng-template #elseBlock>
+        Lorem ipsum dolor sit amet, [...] et dolore magna aliqua.
+    </ng-template>
+
+    <hr />
+
+    <div *ngIf="isVisible then thenBlock else secondElseBlock"></div>
+    <ng-template #thenBlock>
+        <div class="text-justify mt-3 mb-3">
+            Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
+            A communi observantia non est recedendum. Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
+        </div>
+    </ng-template>
+    <ng-template #secondElseBlock>
+        Lorem ipsum dolor sit amet, [...] et dolore magna aliqua.
+    </ng-template>
+
+    <h3>ngClass</h3>
+
+    <button class="btn btn-primary btn-sm" (click)="hasClass = !hasClass">
+        Toggle Class
+    </button>
+
+    <p [ngClass]="{'text-danger': hasClass, 'text-success': !hasClass}">Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.</p>
+
+    <h3>ngSwitch</h3>
+
+    <div class="mb-3">
+        <button class="btn btn-outline-primary btn-sm" (click)="mode = 'vertical'">
+            Verticale
+        </button>
+        <button class="btn btn-outline-primary btn-sm" (click)="mode = 'horizontal'">
+            Horizontale
+        </button>
+    </div>
+
+    <div [ngSwitch]="mode">
+        <div *ngSwitchCase=" 'vertical' ">
+
+            <ul class="list-unstyled">
+                <li *ngFor="let person of liste; index as i">
+                    {{i+1}} - {{ person }}
+                </li>
+            </ul>
+
+        </div>
+        <div *ngSwitchCase=" 'horizontal' ">
+
+            <ul class="list-inline">
+                <li *ngFor="let person of liste; index as i" class="list-inline-item">
+                    {{i+1}} - {{ person }}
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+
+</section>

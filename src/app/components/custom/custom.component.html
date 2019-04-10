@@ -1,0 +1,29 @@
+<header>
+    <h2>Custom Pipe & Directive</h2>
+</header>
+
+<p class="lead text-primary">Pipe</p>
+
+<p> 2^3 = {{ 2 | power:3 }}</p>
+<p> (2^3)*2 = {{ 2 | power:3:2 }}</p>
+
+<p>Palindrome</p>
+
+<input type="text" class="form-control" id="palindrome" #input (keyup)="0" />
+<p id="palindrome_result">{{ input.value | pipelindrome }}</p>
+
+<p class="lead text-primary">Directive</p>
+
+<p appHighlight> Survolez moi avec couleur par defaut </p>
+
+<p [appHighlight]=" 'orange' "> Survolez moi avec couleur orange</p>
+
+<p [appHighlight]=" '#0f0' "> Survolez moi avec couleur CSS Hexa</p>
+
+<p [appHighlight]=" 'rgba(200, 200, 0, 0.1)' "> Survolez moi avec couleur CSS rgba</p>
+
+<p>Autofocus: </p>
+
+<input type="text" placeholder="Entrer votre message" class="form-control" [(ngModel)]="msg" focus />
+<p class="form-control-plaintext">{{ msg }}</p>
+

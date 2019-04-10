@@ -1,0 +1,24 @@
+<header>
+    <h2>Parameters</h2>
+</header>
+
+<nav>
+    <ul class="nav justify-content-center">
+        <li>
+            <a class="nav-link" routerLink="/parameters/jean">Jean</a>
+        </li>
+        <li>
+            <a class="nav-link" [routerLink]="['/parameters', 'sophie']">Sophie</a>
+        </li>
+    </ul>
+</nav>
+
+<section>
+    <p>Hello {{ name }}</p>
+
+    <div class="mt-3">
+        <button class="btn btn-outline-info" (click)="navigateToMarie()">
+            Hello Marie
+        </button>
+    </div>
+</section>

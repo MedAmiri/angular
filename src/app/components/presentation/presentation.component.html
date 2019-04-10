@@ -1,0 +1,62 @@
+<header>
+    <h2>Présentation</h2>
+</header>
+
+<section>
+    <h3>Affichage</h3>
+    <article class="row">
+        <div class="col">
+            <p>1 + 2 = {{ 1 + 2 }}</p>
+        </div>
+        <div class="col">
+            <p>Hello {{ name }} </p>
+        </div>
+        <div class="col">
+            <p>{{ product.name }} @ {{ product.price }}€/kg </p>
+        </div>
+        <div class="col">
+            <p> {{ uppercase(product.name) }} </p>
+        </div>
+    </article>
+    <h3>Evenement</h3>
+    <article class="row">
+        <div class="col">
+            <button class="btn btn-outline-primary" (click)="clicked()">Cliquer moi</button>
+        </div>
+        <div class="col">
+            <button class="btn btn-outline-danger" (click)="message('John', $event)">Hello</button>
+        </div>
+    </article>
+    <h3>Two Way Data Binding</h3><!-- importer le module ngForms pour utiliser ngModel -->
+    <article class="row">
+        <div class="col">
+
+            <input type="text" placeholder="Entrer votre message" class="form-control" [(ngModel)]="msg" />
+            <p class="form-control-plaintext">{{ msg }}</p>
+
+        </div>
+    </article>
+    <h3>Variable de template</h3>
+    <article class="row">
+        <div class="col">
+
+            <input type="text" placeholder="Variable de template" class="form-control" #local_message (keyup)="0" />
+            <p class="form-control-plaintext">{{ local_message.value }}</p>
+
+        </div>
+
+        <div class="col">
+
+            <input type="text" placeholder="Valider avec la touche Entrer" class="form-control" #local_message_2 (keyup.enter)="0" />
+            <p class="form-control-plaintext">{{ local_message_2.value }}</p>
+
+        </div>
+
+    </article>
+    <h3>ngFor</h3>
+    <div>
+        <ul>
+            <li *ngFor="let person of liste"> {{ person }} </li>
+        </ul>
+    </div>
+</section>

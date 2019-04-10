@@ -1,0 +1,51 @@
+<header>
+    <h2>Formulaire</h2>
+</header>
+
+<section class="row">
+    <aside class="col-4">
+
+        <div class="list-group">
+            <a href="#" class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let p of liste; index as i" (click)="update(i, $event)">
+                {{ p.name }} @ {{ p.price | currency:'EUR':'symbol':'1.2-2':'fr' }}
+                <button class="btn btn-danger btn-sm" (click)="remove(i, $event)"> X </button>
+            </a>
+        </div>
+
+    </aside>
+    <article class="col-8">
+
+        <form (ngSubmit)="onSubmit();myForm.reset()" #myForm="ngForm">
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Name: </label>
+                <div class="col-10">
+                    <input type="text" class="form-control" placeholder=" Entrer un nom "
+                        [(ngModel)]="product.name" name="name" required #spyName="ngModel"
+                           [ngClass]="{'is-invalid': spyName.invalid && spyName.touched, 'is-valid':spyName.valid}"/>
+
+                    <p class="invalid-feedback" [hidden]="spyName.valid || spyName.untouched">
+                        Le nom est obligatoire
+                    </p>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Price: </label>
+                <div class="col-10">
+                    <input type="text" class="form-control" placeholder=" Entrer un prix "
+                        [(ngModel)]="product.price" name="price" required #spyPrice="ngModel"
+                           [ngClass]="{'is-invalid': spyPrice.invalid && spyPrice.touched, 'is-valid':spyPrice.valid}"/>
+
+                    <p class="invalid-feedback" [hidden]="spyPrice.valid || spyPrice.untouched">
+                        Le prix est obligatoire
+                    </p>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-10 offset-2">
+                    <input type="submit" class="btn btn-dark" name="envoyer"
+                           [value]="button" [disabled]="myForm.invalid" />
+                </div>
+            </div>
+        </form>
+    </article>
+</section>

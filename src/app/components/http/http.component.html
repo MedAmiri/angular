@@ -1,0 +1,44 @@
+<header>
+    <h2>Http (xhr)</h2>
+</header>
+
+<section class="row">
+    <aside class="col">
+
+        <h3>Liste des utilisateurs</h3>
+        <p>
+            <button class="btn btn-outline-dark" (click)="getUsers()">Afficher les utilisateurs</button>
+        </p>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>SayHello</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let user of users">
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.sayHello() }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </aside>
+    <article class="col">
+        <h3>Utilisateur #1</h3>
+        <!--ul class="list-unstyled">
+            <li>{{user.id}}</li>
+            <li>{{user.name}}</li>
+            <li>{{user.username}}</li>
+            <li>{{user.email}}</li>
+        </ul-->
+    </article>
+</section>
+
+

@@ -1,0 +1,51 @@
+<header>
+    <h2>Promise & Observable</h2>
+</header>
+
+<section class="row">
+    <div class="col">
+        <h3>Les Promises</h3>
+        <p>
+            <button class="btn btn-light" (click)="getAsyncNumbers()">
+                Synchroniser
+            </button>
+            {{ wait }}
+        </p>
+        <p class="alert alert-danger" *ngIf="message">{{ message }}</p>
+
+        <ul class="list-unstyled">
+            <li *ngFor="let number of numbers">{{ number }}</li>
+        </ul>
+    </div>
+    <div class="col">
+        <h3>Les Observables</h3>
+        <p>
+            <button class="btn btn-light" (click)="getObservableNumbers()">
+                Synchroniser
+            </button>
+        </p>
+
+        <ul class="list-unstyled">
+            <li *ngFor="let number of osbNumbers">{{ number }}</li>
+        </ul>
+    </div>
+</section>
+
+<section>
+    <h3>Exercice</h3>
+    <div class="row">
+        <div class="col-1">
+            <button class="btn btn-outline-success btn-sm" (click)="download()" [disabled]="disabled">Download</button>
+        </div>
+        <div class="col">
+            {{ progressString }}
+        </div>
+    </div>
+
+    <div class="mt-3">
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" [ngStyle]="{width: progressString}"></div>
+        </div>
+    </div>
+
+</section>

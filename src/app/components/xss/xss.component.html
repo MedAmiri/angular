@@ -1,0 +1,32 @@
+<header>
+    <h2>XSS</h2>
+</header>
+
+<section>
+    <h3>innerHTML</h3>
+    <article>
+        <p class="lead text-warning">Bound Value:</p>
+        <p>{{ dangerousHtml }}</p>
+        <p class="lead text-warning">Binding innerHTML</p>
+        <p [innerHTML]="dangerousHtml"></p>
+        <!--p>{{safeHtml}}</p-->
+    </article>
+
+    <h3>Urls</h3>
+    <article>
+        <p class="lead text-warning">Dangerous Url: </p>
+        <p><a [href]="dangerousUrl">Cliquez ici</a></p>
+        <p class="lead text-warning">Safe Url:</p>
+        <p><a [href]="safeUrl">Cliquez ici</a></p>
+    </article>
+
+    <h3>Resource URL:</h3>
+    <article>
+        <p class="lead text-warning">Safe Resource Url:</p>
+        <iframe width="560" height="315" [src]="safeResourceUrl" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+        <p class="lead text-warning">Dangerous Resource Url: <small class="text-danger">Impossible</small> </p>
+        <!--iframe width="560" height="315" [src]="dangerousResourceUrl" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe-->
+
+    </article>
+</section>

@@ -1,0 +1,18 @@
+<header>
+    <h2>Service</h2>
+</header>
+
+<div class="row">
+    <div class="col-3">
+        <h3>Liste</h3>
+        <ul class="list-unstyled">
+            <li *ngFor="let product of products">
+                {{ product.name }} @ {{ product.price | currency:'EUR':'Symbol':'1.2-2':'fr' }}
+            </li>
+        </ul>
+    </div>
+    <div class="col">
+        <h3>Ajout</h3>
+
+    </div>
+</div>
